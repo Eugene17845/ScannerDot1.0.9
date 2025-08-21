@@ -11,11 +11,19 @@ def subtract():
         num4 = float(entry4.get())
         if num2 > num1:
             difference_gz = num2 - num1
-            average_gz = min(num1,num2) + (difference_gz/2)
+            average_gz = min(num1, num2) + (difference_gz / 2)
             lambda_gz = 299792458 / (average_gz * 1000000)
-            points = num3 / round(lambda_gz / 2, 3)
+            points = num3 / (lambda_gz / 2)
+            #print(lambda_gz, points)
             points_gz = difference_gz / num4
-            lambda_num2 = int(((299792458 / (num2 * 1000000)) / 2)*100)/100
+            lambda_num2 = int(((299792458 / (num2 * 1000000)) / 2) * 10000) / 10000
+            if lambda_num2 > 0.1:
+                lambda_num2 = int(lambda_num2 * 10) / 10
+            if 0.1 > lambda_num2 > 0.01:
+                lambda_num2 = int(lambda_num2 * 100) / 100
+            if lambda_num2 < 0.01:
+                lambda_num2 = int(lambda_num2 * 1000) / 1000
+            #print(lambda_gz, lambda_num2, num3)
             points_2 = num3 / float(lambda_num2)
 
             result_label.config(text=f"Расстояние(М): {round(4 * lambda_gz, 3)}")
@@ -28,9 +36,17 @@ def subtract():
             difference_gz = num1 - num2
             average_gz = min(num1, num2) + (difference_gz / 2)
             lambda_gz = 299792458 / (average_gz * 1000000)
-            points = num3 / round(lambda_gz / 2, 3)
+            points = num3 / (lambda_gz / 2)
+            #print(lambda_gz, points)
             points_gz = difference_gz / num4
-            lambda_num2 = int(((299792458 / (num1 * 1000000)) / 2) * 100) / 100
+            lambda_num2 = int(((299792458 / (num1 * 1000000)) / 2) * 10000) / 10000
+            if lambda_num2 > 0.1:
+                lambda_num2 = int(lambda_num2 * 10) / 10
+            if 0.1 > lambda_num2 > 0.01:
+                lambda_num2 = int(lambda_num2 * 100) / 100
+            if lambda_num2 < 0.01:
+                lambda_num2 = int(lambda_num2 * 1000) / 1000
+            #print(lambda_gz, lambda_num2, num3)
             points_2 = num3 / float(lambda_num2)
 
             result_label.config(text=f"Расстояние(М): {round(4 * lambda_gz, 3)}")
